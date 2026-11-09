@@ -6,14 +6,6 @@
     "min_price": 10.16,
     "max_price": 58.11,
     "average_rating": 2.93,
-    "in_stock_count": 100,
-    "rating_distribution": {
-        "1": 22,
-        "2": 19,
-        "3": 22,
-        "4": 18,
-        "5": 19
-    },
     "top_5_expensive": [
         {
             "Title": "The Death of Humanity: and the Case for Life",

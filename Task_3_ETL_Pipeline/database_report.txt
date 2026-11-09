@@ -1,0 +1,32 @@
+==================================================
+        DATHEON TASK 3: DATABASE AUDIT REPORT
+==================================================
+Execution Timestamp     : 2026-11-09T16:51:43.168596
+Database Location       : C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\database\books.db
+Database File Size      : 65536 bytes
+Database Status         : PASSED
+
+--- INTEGRITY & CONSTRAINTS ---
+SQLite PRAGMA Integrity : ok
+Primary Key (URL) Check : PASSED (Zero Duplicate URLs)
+Total Table Records     : 100
+
+--- STATISTICAL VALIDATION VIA SQL ---
+Average Price (SQL AVG) : £34.56
+Lowest Price (SQL MIN)  : £10.16
+Highest Price (SQL MAX) : £58.11
+
+--- RATING DISTRIBUTION IN DATABASE ---
+{
+  "1_star": 22,
+  "2_star": 19,
+  "3_star": 22,
+  "4_star": 18,
+  "5_star": 19
+}
+
+--- UPSERT & IDEMPOTENCY STATUS ---
+Upsert Engine Pattern   : INSERT ... ON CONFLICT(url) DO UPDATE SET ...
+Duplicate Safe (Upsert) : VERIFIED
+Transaction ACID Safety : VERIFIED (Explicit COMMIT / ROLLBACK)
+==================================================

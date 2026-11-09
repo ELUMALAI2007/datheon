@@ -1,0 +1,54 @@
+[2026-11-09 16:47:24] [INFO    ] ############################################################
+[2026-11-09 16:47:24] [INFO    ]  DATHEON TASK 2: DATA CLEANING & QUALITY AUDIT STARTED 
+[2026-11-09 16:47:24] [INFO    ] ############################################################
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] STAGE 1: LOADING DATASET
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] Loaded 100 records from scraped_data.csv
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] STAGE 2: DATA CLEANING & VALIDATION
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] Schema validation PASSED. All required columns are present.
+[2026-11-09 16:47:24] [INFO    ] Duplicate records removed by URL: 0
+[2026-11-09 16:47:24] [INFO    ] Data Cleaning & Quality Validation PASSED: 100 clean records.
+[2026-11-09 16:47:24] [INFO    ] Cleaned dataset saved: C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_2_Data_Processing\data\cleaned_data.csv
+[2026-11-09 16:47:24] [INFO    ] Validation report saved: validation_report.json
+[2026-11-09 16:47:24] [INFO    ] Data quality text report saved: data_quality_report.txt
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] STAGE 3: STATISTICAL ANALYSIS
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] Statistical analysis exported: analysis_summary.json
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:24] [INFO    ] STAGE 4: GENERATING CHARTS
+[2026-11-09 16:47:24] [INFO    ] ============================================================
+[2026-11-09 16:47:27] [INFO    ] All 4 visualizations generated and saved in charts/
+[2026-11-09 16:47:27] [INFO    ] ============================================================
+[2026-11-09 16:47:27] [INFO    ] TASK 2 COMPLETE: DATA QUALITY AUDIT & CLEANING FINISHED!
+[2026-11-09 16:47:27] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] ############################################################
+[2026-11-09 16:51:38] [INFO    ]  DATHEON TASK 2: DATA CLEANING & QUALITY AUDIT STARTED 
+[2026-11-09 16:51:38] [INFO    ] ############################################################
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] STAGE 1: LOADING DATASET
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] Loaded 100 records from scraped_data.csv
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] STAGE 2: DATA CLEANING & VALIDATION
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] Schema validation PASSED. All required columns are present.
+[2026-11-09 16:51:38] [INFO    ] Duplicate records removed by URL: 0
+[2026-11-09 16:51:38] [INFO    ] Data Cleaning & Quality Validation PASSED: 100 clean records.
+[2026-11-09 16:51:38] [INFO    ] Cleaned dataset saved: C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_2_Data_Processing\data\cleaned_data.csv
+[2026-11-09 16:51:38] [INFO    ] Validation report saved: validation_report.json
+[2026-11-09 16:51:38] [INFO    ] Data quality text report saved: data_quality_report.txt
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:38] [INFO    ] STAGE 3: STATISTICAL ANALYSIS
+[2026-11-09 16:51:38] [INFO    ] ============================================================
+[2026-11-09 16:51:39] [INFO    ] Statistical analysis exported: analysis_summary.json
+[2026-11-09 16:51:39] [INFO    ] ============================================================
+[2026-11-09 16:51:39] [INFO    ] STAGE 4: GENERATING CHARTS
+[2026-11-09 16:51:39] [INFO    ] ============================================================
+[2026-11-09 16:51:40] [INFO    ] All 4 visualizations generated and saved in charts/
+[2026-11-09 16:51:40] [INFO    ] ============================================================
+[2026-11-09 16:51:40] [INFO    ] TASK 2 COMPLETE: DATA QUALITY AUDIT & CLEANING FINISHED!
+[2026-11-09 16:51:40] [INFO    ] ============================================================

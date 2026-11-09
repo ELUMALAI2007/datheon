@@ -52,3 +52,69 @@
 [2026-11-09 16:30:19] [INFO    ] [loading.py:99] - SQL Aggregate Check: Avg Price = £34.56, Min = £10.16, Max = £58.11
 [2026-11-09 16:30:19] [INFO    ] [loading.py:109] - SQLite database connection closed.
 [2026-11-09 16:30:19] [INFO    ] [run_pipeline.py:76] - Pipeline completed successfully in 0.10 seconds.
+[2026-11-09 16:48:56] [INFO    ] [run_pipeline.py:58] - **************************************************
+[2026-11-09 16:48:56] [INFO    ] [run_pipeline.py:59] - DATHEON AUTOMATED ETL PIPELINE EXECUTION STARTED
+[2026-11-09 16:48:56] [INFO    ] [run_pipeline.py:60] - Configuration: FORCE_RE_SCRAPE = False
+[2026-11-09 16:48:56] [INFO    ] [run_pipeline.py:61] - **************************************************
+[2026-11-09 16:48:56] [INFO    ] [extraction.py:142] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [extraction.py:143] - STAGE 1: DATA EXTRACTION (E)
+[2026-11-09 16:48:56] [INFO    ] [extraction.py:144] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [extraction.py:147] - Existing raw data found at 'C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\data\raw\books_raw.csv'. Loading from cache to avoid redundant network calls.
+[2026-11-09 16:48:56] [INFO    ] [validation.py:34] - Raw data validation PASSED: 100 records with all required columns present.
+[2026-11-09 16:48:56] [INFO    ] [extraction.py:151] - Extraction successful: 100 records loaded from cache.
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:25] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:26] - STAGE 2: DATA TRANSFORMATION (T)
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:27] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:46] - Deduplication: Zero duplicate URLs detected.
+[2026-11-09 16:48:56] [INFO    ] [validation.py:74] - Transformed data validation PASSED: 100 records are clean, typed, and valid.
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:85] - Transformed data exported to books_transformed.csv and books_transformed.json
+[2026-11-09 16:48:56] [INFO    ] [transformation.py:86] - Transformation completed: 100 clean records prepared.
+[2026-11-09 16:48:56] [INFO    ] [loading.py:72] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [loading.py:73] - STAGE 3: DATA LOADING & UPSERT (L)
+[2026-11-09 16:48:56] [INFO    ] [loading.py:74] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [loading.py:80] - Connecting to SQLite database at: C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\database\books.db
+[2026-11-09 16:48:56] [INFO    ] [loading.py:63] - SQLite schema initialized: Table 'books' and indexes verified.
+[2026-11-09 16:48:56] [INFO    ] [loading.py:122] - Transaction committed: 100 records processed via UPSERT.
+[2026-11-09 16:48:56] [INFO    ] [loading.py:127] - Final record count in table 'books': 100
+[2026-11-09 16:48:56] [INFO    ] [loading.py:138] - SQLite database connection closed.
+[2026-11-09 16:48:56] [INFO    ] [loading.py:149] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [loading.py:150] - DATABASE INTEGRITY & VERIFICATION AUDIT
+[2026-11-09 16:48:56] [INFO    ] [loading.py:151] - ==========================================
+[2026-11-09 16:48:56] [INFO    ] [loading.py:175] - PRAGMA integrity_check result: ok
+[2026-11-09 16:48:56] [INFO    ] [loading.py:187] - Primary key uniqueness PASSED: No duplicate URLs found.
+[2026-11-09 16:48:56] [INFO    ] [loading.py:215] - Database verification JSON saved: database_verification.json
+[2026-11-09 16:48:56] [INFO    ] [loading.py:248] - Database text report saved: database_report.txt
+[2026-11-09 16:48:56] [INFO    ] [run_pipeline.py:85] - Pipeline completed successfully in 0.10 seconds.
+[2026-11-09 16:51:43] [INFO    ] [run_pipeline.py:58] - **************************************************
+[2026-11-09 16:51:43] [INFO    ] [run_pipeline.py:59] - DATHEON AUTOMATED ETL PIPELINE EXECUTION STARTED
+[2026-11-09 16:51:43] [INFO    ] [run_pipeline.py:60] - Configuration: FORCE_RE_SCRAPE = False
+[2026-11-09 16:51:43] [INFO    ] [run_pipeline.py:61] - **************************************************
+[2026-11-09 16:51:43] [INFO    ] [extraction.py:142] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [extraction.py:143] - STAGE 1: DATA EXTRACTION (E)
+[2026-11-09 16:51:43] [INFO    ] [extraction.py:144] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [extraction.py:147] - Existing raw data found at 'C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\data\raw\books_raw.csv'. Loading from cache to avoid redundant network calls.
+[2026-11-09 16:51:43] [INFO    ] [validation.py:34] - Raw data validation PASSED: 100 records with all required columns present.
+[2026-11-09 16:51:43] [INFO    ] [extraction.py:151] - Extraction successful: 100 records loaded from cache.
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:25] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:26] - STAGE 2: DATA TRANSFORMATION (T)
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:27] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:46] - Deduplication: Zero duplicate URLs detected.
+[2026-11-09 16:51:43] [INFO    ] [validation.py:74] - Transformed data validation PASSED: 100 records are clean, typed, and valid.
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:85] - Transformed data exported to books_transformed.csv and books_transformed.json
+[2026-11-09 16:51:43] [INFO    ] [transformation.py:86] - Transformation completed: 100 clean records prepared.
+[2026-11-09 16:51:43] [INFO    ] [loading.py:72] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [loading.py:73] - STAGE 3: DATA LOADING & UPSERT (L)
+[2026-11-09 16:51:43] [INFO    ] [loading.py:74] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [loading.py:80] - Connecting to SQLite database at: C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\database\books.db
+[2026-11-09 16:51:43] [INFO    ] [loading.py:63] - SQLite schema initialized: Table 'books' and indexes verified.
+[2026-11-09 16:51:43] [INFO    ] [loading.py:122] - Transaction committed: 100 records processed via UPSERT.
+[2026-11-09 16:51:43] [INFO    ] [loading.py:127] - Final record count in table 'books': 100
+[2026-11-09 16:51:43] [INFO    ] [loading.py:138] - SQLite database connection closed.
+[2026-11-09 16:51:43] [INFO    ] [loading.py:149] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [loading.py:150] - DATABASE INTEGRITY & VERIFICATION AUDIT
+[2026-11-09 16:51:43] [INFO    ] [loading.py:151] - ==========================================
+[2026-11-09 16:51:43] [INFO    ] [loading.py:175] - PRAGMA integrity_check result: ok
+[2026-11-09 16:51:43] [INFO    ] [loading.py:187] - Primary key uniqueness PASSED: No duplicate URLs found.
+[2026-11-09 16:51:43] [INFO    ] [loading.py:215] - Database verification JSON saved: database_verification.json
+[2026-11-09 16:51:43] [INFO    ] [loading.py:248] - Database text report saved: database_report.txt
+[2026-11-09 16:51:43] [INFO    ] [run_pipeline.py:85] - Pipeline completed successfully in 0.04 seconds.

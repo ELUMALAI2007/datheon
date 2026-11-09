@@ -1,4 +1,4 @@
-Title,Price,Rating,Availability,URL,Page,Price_Value,Rating_Score
+﻿Title,Price,Rating,Availability,URL,Page,Price_Value,Rating_Score
 A Light in the Attic,£51.77,Three,In stock,https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html,1,51.77,3
 Tipping the Velvet,£53.74,One,In stock,https://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html,1,53.74,1
 Soumission,£50.10,One,In stock,https://books.toscrape.com/catalogue/soumission_998/index.html,1,50.1,1

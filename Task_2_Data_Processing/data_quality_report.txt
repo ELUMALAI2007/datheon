@@ -1,0 +1,52 @@
+==================================================
+       DATHEON TASK 2: DATA QUALITY REPORT
+==================================================
+Execution Timestamp : 2026-11-09T16:51:38.980477
+Data Quality Status : PASSED
+
+--- RECORD COUNTS ---
+Total Input Records        : 100
+Total Output Clean Records : 100
+Duplicate Records Removed  : 0
+Invalid Records Removed    : 0
+  - Invalid / Zero Prices  : 0
+  - Invalid Rating Values  : 0
+  - Empty Titles           : 0
+  - Empty URLs             : 0
+
+--- SCHEMA VALIDATION ---
+Schema Valid Status        : PASSED
+Required Columns Present   : 8 / 6
+Missing Columns            : []
+
+--- MISSING VALUES AUDIT ---
+Missing Values Before Cleaning:
+{
+  "Title": 0,
+  "Price": 0,
+  "Rating": 0,
+  "Availability": 0,
+  "URL": 0,
+  "Page": 0,
+  "Price_Value": 0,
+  "Rating_Score": 0
+}
+
+Missing Values After Cleaning:
+{
+  "Title": 0,
+  "Price": 0,
+  "Rating": 0,
+  "Availability": 0,
+  "URL": 0,
+  "Page": 0,
+  "Price_Value": 0,
+  "Rating_Score": 0,
+  "In_Stock": 0,
+  "Price_Category": 0
+}
+
+--- SUMMARY & CONCLUSION ---
+Clean Dataset Export : C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_2_Data_Processing\data\cleaned_data.csv
+Integrity Status     : 100% Non-Null, Typed and Validated
+==================================================

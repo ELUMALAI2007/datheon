@@ -1,0 +1,56 @@
+{
+    "timestamp": "2026-11-09T16:51:38.980477",
+    "total_input_records": 100,
+    "missing_values_before": {
+        "Title": 0,
+        "Price": 0,
+        "Rating": 0,
+        "Availability": 0,
+        "URL": 0,
+        "Page": 0,
+        "Price_Value": 0,
+        "Rating_Score": 0
+    },
+    "schema_validation": {
+        "is_valid": true,
+        "required_columns": [
+            "Title",
+            "Price",
+            "Rating",
+            "Availability",
+            "URL",
+            "Page"
+        ],
+        "present_columns": [
+            "Title",
+            "Price",
+            "Rating",
+            "Availability",
+            "URL",
+            "Page",
+            "Price_Value",
+            "Rating_Score"
+        ],
+        "missing_columns": []
+    },
+    "duplicates_removed": 0,
+    "invalid_prices_removed": 0,
+    "invalid_ratings_removed": 0,
+    "empty_titles_removed": 0,
+    "empty_urls_removed": 0,
+    "total_invalid_removed": 0,
+    "total_output_records": 100,
+    "missing_values_after": {
+        "Title": 0,
+        "Price": 0,
+        "Rating": 0,
+        "Availability": 0,
+        "URL": 0,
+        "Page": 0,
+        "Price_Value": 0,
+        "Rating_Score": 0,
+        "In_Stock": 0,
+        "Price_Category": 0
+    },
+    "data_quality_status": "PASSED"
+}

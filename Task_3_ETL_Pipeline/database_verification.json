@@ -1,0 +1,19 @@
+{
+    "timestamp": "2026-11-09T16:51:43.168596",
+    "database_path": "C:\\Users\\melum\\OneDrive\\Desktop\\Datheon_Internship\\Task_3_ETL_Pipeline\\database\\books.db",
+    "file_size_bytes": 65536,
+    "integrity_check": "ok",
+    "primary_key_uniqueness": "PASSED (Zero Duplicate URLs)",
+    "total_records": 100,
+    "average_price": 34.56,
+    "min_price": 10.16,
+    "max_price": 58.11,
+    "rating_breakdown": {
+        "1_star": 22,
+        "2_star": 19,
+        "3_star": 22,
+        "4_star": 18,
+        "5_star": 19
+    },
+    "status": "PASSED"
+}

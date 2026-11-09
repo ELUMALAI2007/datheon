@@ -8,10 +8,11 @@
 import argparse
 import sys
 import time
+from pathlib import Path
 
-from config import DB_PATH, FORCE_RE_SCRAPE, LOG_FILE_PATH, PROCESSED_CSV_PATH, PROCESSED_JSON_PATH
+from config import BASE_DIR, DB_PATH, FORCE_RE_SCRAPE, LOG_FILE_PATH, PROCESSED_CSV_PATH, PROCESSED_JSON_PATH
 from src.extraction import extract_data
-from src.loading import load_to_sqlite
+from src.loading import load_to_sqlite, verify_database
 from src.logger_config import setup_logger
 from src.transformation import transform_data
 
@@ -19,35 +20,39 @@ from src.transformation import transform_data
 def print_summary_report(
     extracted_count: int,
     transformed_count: int,
-    loaded_count: int,
+    loaded_metrics: dict,
+    verification: dict,
     duration: float,
     status: str
 ) -> None:
     """Print the final executive summary to console."""
-    print("\n" + "=" * 50)
-    print("             ETL PIPELINE SUMMARY")
-    print("=" * 50)
-    print(f"Extraction       : SUCCESS ({extracted_count} records)")
-    print(f"Transformation   : SUCCESS ({transformed_count} records)")
-    print(f"Loading (SQLite) : SUCCESS ({loaded_count} records)")
-    print("-" * 50)
-    print(f"Records Extracted : {extracted_count}")
-    print(f"Records Processed : {transformed_count}")
-    print(f"Records Loaded    : {loaded_count}")
-    print("-" * 50)
-    print(f"CSV Export       : SUCCESS ({PROCESSED_CSV_PATH.name})")
-    print(f"JSON Export      : SUCCESS ({PROCESSED_JSON_PATH.name})")
-    print(f"Database Storage : SUCCESS ({DB_PATH.name} -> table 'books')")
-    print("-" * 50)
-    print(f"Pipeline Status  : {status}")
-    print(f"Total Duration   : {duration:.2f} seconds")
-    print("=" * 50 + "\n")
+    print("\n" + "=" * 55)
+    print("             DATHEON ETL PIPELINE SUMMARY")
+    print("=" * 55)
+    print(f"Extraction Stage      : SUCCESS ({extracted_count} records)")
+    print(f"Transformation Stage  : SUCCESS ({transformed_count} records)")
+    print(f"Loading Stage (UPSERT): SUCCESS ({loaded_metrics.get('final_db_count', 0)} records in SQLite)")
+    print("-" * 55)
+    print(f"Raw Records Extracted : {extracted_count}")
+    print(f"Clean Records Loaded  : {transformed_count}")
+    print(f"Total in Database     : {verification.get('total_records', 0)}")
+    print(f"PRAGMA Integrity Check: {verification.get('integrity_check', 'UNKNOWN')}")
+    print(f"Primary Key Check     : {verification.get('primary_key_uniqueness', 'UNKNOWN')}")
+    print("-" * 55)
+    print(f"CSV Deliverable       : SUCCESS ({PROCESSED_CSV_PATH.name})")
+    print(f"JSON Deliverable      : SUCCESS ({PROCESSED_JSON_PATH.name})")
+    print(f"Database File         : SUCCESS ({DB_PATH.name} -> table 'books')")
+    print(f"Database Audit Report : SUCCESS (database_report.txt)")
+    print("-" * 55)
+    print(f"Pipeline Status       : {status}")
+    print(f"Total Duration        : {duration:.2f} seconds")
+    print("=" * 55 + "\n")
 
 
 def run_pipeline(force_scrape: bool = False) -> bool:
     """
     Execute the automated ETL pipeline end-to-end:
-    Extract -> Transform -> Load
+    Extract -> Transform -> Load (UPSERT) -> Verify Database
     """
     logger = setup_logger(LOG_FILE_PATH)
     logger.info("**************************************************")
@@ -58,19 +63,23 @@ def run_pipeline(force_scrape: bool = False) -> bool:
     start_time = time.time()
     extracted_count = 0
     transformed_count = 0
-    loaded_count = 0
+    loaded_metrics = {}
+    verification = {}
 
     try:
-        # Step 1: Extraction
+        # Stage 1: Extraction
         raw_df = extract_data(force_scrape=force_scrape)
         extracted_count = len(raw_df)
 
-        # Step 2: Transformation
+        # Stage 2: Transformation
         clean_df = transform_data(raw_df)
         transformed_count = len(clean_df)
 
-        # Step 3: Loading
-        loaded_count = load_to_sqlite(clean_df, DB_PATH)
+        # Stage 3: Loading with Explicit SQLite UPSERT
+        loaded_metrics = load_to_sqlite(clean_df, DB_PATH)
+
+        # Stage 4: Comprehensive Database Verification & Report Generation
+        verification = verify_database(DB_PATH, output_dir=BASE_DIR)
 
         duration = time.time() - start_time
         logger.info(f"Pipeline completed successfully in {duration:.2f} seconds.")
@@ -78,7 +87,8 @@ def run_pipeline(force_scrape: bool = False) -> bool:
         print_summary_report(
             extracted_count=extracted_count,
             transformed_count=transformed_count,
-            loaded_count=loaded_count,
+            loaded_metrics=loaded_metrics,
+            verification=verification,
             duration=duration,
             status="COMPLETED"
         )
@@ -86,11 +96,12 @@ def run_pipeline(force_scrape: bool = False) -> bool:
 
     except Exception as e:
         duration = time.time() - start_time
-        logger.critical(f"FATAL: Pipeline execution halted due to unhandled error: {e}", exc_info=True)
+        logger.critical(f"FATAL: Pipeline execution halted due to error: {e}", exc_info=True)
         print_summary_report(
             extracted_count=extracted_count,
             transformed_count=transformed_count,
-            loaded_count=loaded_count,
+            loaded_metrics=loaded_metrics,
+            verification=verification,
             duration=duration,
             status="FAILED"
         )
@@ -113,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
