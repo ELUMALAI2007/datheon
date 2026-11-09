@@ -1,0 +1,26 @@
+[
+    {
+        "Title":"Test Book One",
+        "Price":"£20.00",
+        "Rating":"Five",
+        "Availability":"In stock",
+        "URL":"https:\/\/books.toscrape.com\/catalogue\/test-book-one_1\/index.html",
+        "Page":1,
+        "Price_Value":20.0,
+        "Rating_Score":5,
+        "In_Stock_Flag":1,
+        "Price_Category":"Budget (<£25)"
+    },
+    {
+        "Title":"Test Book Two",
+        "Price":"£50.00",
+        "Rating":"Two",
+        "Availability":"In stock",
+        "URL":"https:\/\/books.toscrape.com\/catalogue\/test-book-two_2\/index.html",
+        "Page":1,
+        "Price_Value":50.0,
+        "Rating_Score":2,
+        "In_Stock_Flag":1,
+        "Price_Category":"Premium (>£45)"
+    }
+]

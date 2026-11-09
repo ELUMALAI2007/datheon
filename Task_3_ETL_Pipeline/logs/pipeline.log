@@ -1,0 +1,27 @@
+[2026-11-06 14:49:59] [INFO    ] [run_pipeline.py:53] - **************************************************
+[2026-11-06 14:49:59] [INFO    ] [run_pipeline.py:54] - DATHEON AUTOMATED ETL PIPELINE EXECUTION STARTED
+[2026-11-06 14:49:59] [INFO    ] [run_pipeline.py:55] - Configuration: FORCE_RE_SCRAPE = False
+[2026-11-06 14:49:59] [INFO    ] [run_pipeline.py:56] - **************************************************
+[2026-11-06 14:49:59] [INFO    ] [extraction.py:95] - ==========================================
+[2026-11-06 14:49:59] [INFO    ] [extraction.py:96] - STAGE 1: DATA EXTRACTION (E)
+[2026-11-06 14:49:59] [INFO    ] [extraction.py:97] - ==========================================
+[2026-11-06 14:49:59] [INFO    ] [extraction.py:100] - Existing raw data found at 'C:\Users\melum\OneDrive\Desktop\Datheon_Internship\Task_3_ETL_Pipeline\data\raw\books_raw.csv'. Loading from cache to avoid redundant network calls.
+[2026-11-06 14:50:00] [INFO    ] [validation.py:34] - Raw data validation PASSED: 100 records with all required columns present.
+[2026-11-06 14:50:00] [INFO    ] [extraction.py:104] - Extraction successful: 100 records loaded from cache.
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:25] - ==========================================
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:26] - STAGE 2: DATA TRANSFORMATION (T)
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:27] - ==========================================
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:46] - Deduplication: Zero duplicate URLs detected.
+[2026-11-06 14:50:00] [INFO    ] [validation.py:74] - Transformed data validation PASSED: 100 records are clean, typed, and valid.
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:85] - Transformed data exported to books_transformed.csv and books_transformed.json
+[2026-11-06 14:50:00] [INFO    ] [transformation.py:86] - Transformation completed: 100 clean records prepared.
+[2026-11-06 14:50:00] [INFO    ] [loading.py:46] - ==========================================
+[2026-11-06 14:50:00] [INFO    ] [loading.py:47] - STAGE 3: DATA LOADING (L)
+[2026-11-06 14:50:00] [INFO    ] [loading.py:48] - ==========================================
+[2026-11-06 14:50:00] [INFO    ] [loading.py:55] - Connecting to SQLite database: books.db
+[2026-11-06 14:50:00] [INFO    ] [loading.py:37] - SQLite schema initialized: Table 'books' and indexes are ready.
+[2026-11-06 14:50:00] [INFO    ] [loading.py:89] - Database transaction committed: 100 records inserted/upserted.
+[2026-11-06 14:50:00] [INFO    ] [loading.py:98] - Database Verification: Total records in 'books' table = 100
+[2026-11-06 14:50:00] [INFO    ] [loading.py:99] - SQL Aggregate Check: Avg Price = £34.56, Min = £10.16, Max = £58.11
+[2026-11-06 14:50:00] [INFO    ] [loading.py:109] - SQLite database connection closed.
+[2026-11-06 14:50:00] [INFO    ] [run_pipeline.py:76] - Pipeline completed successfully in 0.11 seconds.

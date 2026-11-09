@@ -1,0 +1,71 @@
+{
+    "total_products": 100,
+    "average_price": 34.56,
+    "median_price": 34.78,
+    "std_price": 14.64,
+    "min_price": 10.16,
+    "max_price": 58.11,
+    "average_rating": 2.93,
+    "in_stock_count": 100,
+    "rating_distribution": {
+        "1": 22,
+        "2": 19,
+        "3": 22,
+        "4": 18,
+        "5": 19
+    },
+    "top_5_expensive": [
+        {
+            "Title": "The Death of Humanity: and the Case for Life",
+            "Price_Value": 58.11,
+            "Rating_Score": 4
+        },
+        {
+            "Title": "Slow States of Collapse: Poems",
+            "Price_Value": 57.31,
+            "Rating_Score": 3
+        },
+        {
+            "Title": "Our Band Could Be Your Life: Scenes from the American Indie Underground, 1981-1991",
+            "Price_Value": 57.25,
+            "Rating_Score": 3
+        },
+        {
+            "Title": "The Past Never Ends",
+            "Price_Value": 56.5,
+            "Rating_Score": 4
+        },
+        {
+            "Title": "The Pioneer Woman Cooks: Dinnertime: Comfort Classics, Freezer Food, 16-Minute Meals, and Other Delicious Ways to Solve Supper!",
+            "Price_Value": 56.41,
+            "Rating_Score": 1
+        }
+    ],
+    "top_5_affordable": [
+        {
+            "Title": "Patience",
+            "Price_Value": 10.16,
+            "Rating_Score": 3
+        },
+        {
+            "Title": "In Her Wake",
+            "Price_Value": 12.84,
+            "Rating_Score": 1
+        },
+        {
+            "Title": "Princess Between Worlds (Wide-Awake Princess #5)",
+            "Price_Value": 13.34,
+            "Rating_Score": 5
+        },
+        {
+            "Title": "Princess Jellyfish 2-in-1 Omnibus, Vol. 01 (Princess Jellyfish 2-in-1 Omnibus #1)",
+            "Price_Value": 13.61,
+            "Rating_Score": 5
+        },
+        {
+            "Title": "Starving Hearts (Triangular Trade Trilogy, #1)",
+            "Price_Value": 13.99,
+            "Rating_Score": 2
+        }
+    ]
+}

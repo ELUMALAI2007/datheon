@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datheon Internship | Task 1 - Web Scraping Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --bg-light: #f8f9fa;
+        }
+        body {
+            background-color: #f4f6f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .chart-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .table-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .table th {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: #f8f9fa;
+        }
+        .star-rating {
+            color: #ffc107;
+        }
+        .badge-stock {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <i class="bi bi-book-half me-2 text-primary fs-4"></i>
+                <span>Datheon Data Engineering</span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-primary px-3 py-2 rounded-pill">
+                    <i class="bi bi-patch-check-fill me-1"></i> Task 1: Web Scraper
+                </span>
+                <span class="badge bg-secondary px-3 py-2 rounded-pill text-white">
+                    ID: DT-2026-245CV
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid px-4 py-4">
+
+        <!-- Header Title & Export Buttons -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+            <div>
+                <h2 class="fw-bold mb-1">Books to Scrape Analytics Dashboard</h2>
+                <p class="text-muted mb-0">Automated Web Scraping, Data Extraction & Exploratory View</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="/download/csv" class="btn btn-outline-success shadow-sm">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i> Download CSV
+                </a>
+                <a href="/download/json" class="btn btn-outline-primary shadow-sm">
+                    <i class="bi bi-filetype-json me-1"></i> Download JSON
+                </a>
+            </div>
+        </div>
+
+        <!-- Metric KPI Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted small fw-semibold">TOTAL BOOKS</span>
+                            <h3 class="fw-bold mt-1 mb-0">{{ total_books }}</h3>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted small fw-semibold">AVERAGE PRICE</span>
+                            <h3 class="fw-bold mt-1 mb-0">£{{ average_price }}</h3>
+                        </div>
+                        <div class="stat-icon bg-info bg-opacity-10 text-info">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted small fw-semibold">LOWEST PRICE</span>
+                            <h3 class="fw-bold mt-1 mb-0 text-success">£{{ lowest_price }}</h3>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-arrow-down-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted small fw-semibold">HIGHEST PRICE</span>
+                            <h3 class="fw-bold mt-1 mb-0 text-danger">£{{ highest_price }}</h3>
+                        </div>
+                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-arrow-up-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row g-4 mb-4">
+            <!-- Price Range Distribution -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Price Range Distribution</h5>
+                        <span class="badge bg-light text-dark border">Currency: GBP (£)</span>
+                    </div>
+                    <div style="height: 280px;">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Distribution -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Star Rating Distribution</h5>
+                        <span class="badge bg-light text-dark border">1 to 5 Stars</span>
+                    </div>
+                    <div style="height: 280px;">
+                        <canvas id="ratingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Table & Search/Filter Section -->
+        <div class="card table-card mb-4">
+            <div class="card-header bg-white py-3 border-0">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" id="searchInput" class="form-control bg-light border-start-0" placeholder="Search book title...">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="ratingFilter" class="form-select bg-light">
+                            <option value="all">Filter by Rating: All</option>
+                            <option value="5">5 Stars only</option>
+                            <option value="4">4 Stars only</option>
+                            <option value="3">3 Stars only</option>
+                            <option value="2">2 Stars only</option>
+                            <option value="1">1 Star only</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 text-md-end text-muted small">
+                        Showing <strong id="visibleCount">{{ total_books }}</strong> of {{ total_books }} records
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="booksTable">
+                    <thead>
+                        <tr>
+                            <th class="ps-4">#</th>
+                            <th>Book Title</th>
+                            <th>Price</th>
+                            <th>Rating</th>
+                            <th>Availability</th>
+                            <th>Page</th>
+                            <th class="text-end pe-4">Product Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr data-title="{{ book.Title | lower }}" data-rating="{{ book.Rating_Score }}">
+                            <td class="ps-4 text-muted small">{{ loop.index }}</td>
+                            <td>
+                                <strong class="text-dark">{{ book.Title }}</strong>
+                            </td>
+                            <td>
+                                <span class="fw-bold text-primary">£{{ "%.2f"|format(book.Price_Value) }}</span>
+                            </td>
+                            <td>
+                                <span class="star-rating">
+                                    {% for _ in range(book.Rating_Score) %}★{% endfor %}
+                                </span>
+                                <span class="text-muted small ms-1">({{ book.Rating }})</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-stock px-2 py-1 rounded-pill">
+                                    <i class="bi bi-check-circle-fill me-1"></i>{{ book.Availability }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-light text-dark border">Page {{ book.Page }}</span>
+                            </td>
+                            <td class="text-end pe-4">
+                                <a href="{{ book.URL }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                                    View <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-muted py-3 small">
+            Datheon Internship Program &bull; Python for Data Engineering & Automation &bull; Application ID: DT-2026-245CV
+        </footer>
+
+    </div>
+
+    <!-- Interactive Client Scripts & Chart Rendering -->
+    <script>
+        // 1. Price Distribution Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: {{ price_labels | tojson }},
+                datasets: [{
+                    label: 'Number of Books',
+                    data: {{ price_counts | tojson }},
+                    backgroundColor: 'rgba(13, 110, 253, 0.75)',
+                    borderColor: 'rgba(13, 110, 253, 1)',
+                    borderWidth: 1,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 5 }
+                    }
+                }
+            }
+        });
+
+        // 2. Rating Distribution Chart
+        const ratingCtx = document.getElementById('ratingChart').getContext('2d');
+        new Chart(ratingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
+                datasets: [{
+                    data: {{ ratings_data | tojson }},
+                    backgroundColor: [
+                        '#dc3545',
+                        '#fd7e14',
+                        '#ffc107',
+                        '#20c997',
+                        '#0d6efd'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // 3. Client-side Search and Filter
+        const searchInput = document.getElementById('searchInput');
+        const ratingFilter = document.getElementById('ratingFilter');
+        const tableRows = document.querySelectorAll('#booksTable tbody tr');
+        const visibleCountSpan = document.getElementById('visibleCount');
+
+        function filterTable() {
+            const query = searchInput.value.toLowerCase().trim();
+            const selectedRating = ratingFilter.value;
+            let visible = 0;
+
+            tableRows.forEach(row => {
+                const title = row.getAttribute('data-title');
+                const rating = row.getAttribute('data-rating');
+
+                const matchesSearch = title.includes(query);
+                const matchesRating = (selectedRating === 'all') || (rating === selectedRating);
+
+                if (matchesSearch && matchesRating) {
+                    row.style.display = '';
+                    visible++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            visibleCountSpan.textContent = visible;
+        }
+
+        searchInput.addEventListener('input', filterTable);
+        ratingFilter.addEventListener('change', filterTable);
+    </script>
+</body>
+</html>
+
